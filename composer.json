@@ -1,0 +1,26 @@
+{
+    "name": "super-eggs/dcat-admin-extensions-distpicker",
+    "description": "Distpicker extension for dcat-admin",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension", "distpicker"],
+    "homepage": "https://github.com/super-eggs/dcat-admin-extensions-distpicker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "supereggs",
+            "email": "1552915523@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dcat\\Admin\\Extension\\ChinaDistpicker\\": "src/"
+        },
+         "files": [
+            "src/bootstrap.php"
+        ]
+    }
+}
