@@ -21,8 +21,8 @@ class ChinaDistpickerServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole() && $assets = $extension->assets()) {
             $this->publishes(
-                [$assets => public_path('vendor/dcat-admin-extensions/china-distpicker')],
-                'china-distpicker'
+                [$assets => public_path('vendor/super-eggs/dcat-admin-extensions-distpicker')],
+                'dcat-admin-extensions-distpicker'
             );
         }
         Form::extend('distpicker', \Dcat\Admin\Extension\ChinaDistpicker\Form\Distpicker::class);
