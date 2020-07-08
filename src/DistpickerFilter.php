@@ -6,6 +6,7 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Grid\Filter\AbstractFilter;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Dcat\Admin\Grid\Filter;
 
 class DistpickerFilter extends AbstractFilter
 {
@@ -13,6 +14,10 @@ class DistpickerFilter extends AbstractFilter
      * @var array
      */
     protected $column = [];
+
+    protected static $js = [
+        'vendor/super-eggs/dcat-admin-extensions-distpicker/dist/distpicker.min.js'
+    ];
 
     /**
      * @var array
@@ -39,6 +44,14 @@ class DistpickerFilter extends AbstractFilter
 
         $this->setPresenter(new FilterPresenter());
     }
+
+    public function setParent(Filter $filter)
+    {
+        $this->parent = $filter;
+
+        $this->id = $this->formatId($this->column);
+    }
+
 
     /**
      * {@inheritdoc}
@@ -83,7 +96,7 @@ class DistpickerFilter extends AbstractFilter
     /**
      * {@inheritdoc}
      */
-    protected function buildRelationQuery($columns = [])
+    protected function buildRelationQuery(...$columns)
     {
         $data = [];
 
@@ -114,6 +127,11 @@ class DistpickerFilter extends AbstractFilter
         return $columns;
     }
 
+    protected function formatId($columns)
+    {
+        return str_replace('.', '_', $columns);
+    }
+
     /**
      * Setup js scripts.
      */
@@ -123,14 +141,15 @@ class DistpickerFilter extends AbstractFilter
         $city     = old($this->column['city'], Arr::get($this->value, $this->column['city']));
         $district = old($this->column['district'], Arr::get($this->value, $this->column['district']));
 
-        $script = <<<EOT
+        $script = <<<JS
 $("#{$this->id}").distpicker({
   province: '$province',
   city: '$city',
   district: '$district'
 });
-EOT;
+JS;
         Admin::script($script);
+        Admin::js(static::$js);
     }
 
     /**
@@ -149,5 +168,10 @@ EOT;
             'value'     => $this->value ?: $this->defaultValue,
             'presenter' => $this->presenter(),
         ], $this->presenter()->variables());
+    }
+
+    public function render()
+    {
+        return view('china-distpicker::filter', $this->variables());
     }
 }
