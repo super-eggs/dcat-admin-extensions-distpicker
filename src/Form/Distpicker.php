@@ -94,7 +94,10 @@ class Distpicker extends Field
         $id = uniqid('distpicker-');
 
         $this->script = <<<EOT
-$("#{$id}").distpicker({
+var oid = '{$id}',
+    nid = 'distpicker-' + Math.random().toString(36).substring(2);
+$('label[for=' + oid + ']').attr('for', nid);
+$('#' + oid).attr('id', nid).distpicker({
   province: '$province',
   city: '$city',
   district: '$district'
