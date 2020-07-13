@@ -86,7 +86,7 @@ class DistpickerFilter extends AbstractFilter
 
         $this->value = $value;
 
-         if ($this->value) {
+         if (!$this->value) {
             return [];
         }
 
