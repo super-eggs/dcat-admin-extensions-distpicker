@@ -86,6 +86,11 @@ class DistpickerFilter extends AbstractFilter
 
         $this->value = $value;
 
+         if ($this->value) {
+            return [];
+        }
+
+
         if (Str::contains(key($value), '.')) {
             return $this->buildRelationQuery($value);
         }
