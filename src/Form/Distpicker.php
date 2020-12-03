@@ -16,7 +16,7 @@ class Distpicker extends Field
      * @var array
      */
     protected static $js = [
-        'vendor/super-eggs/dcat-admin-extensions-distpicker/dist/distpicker.min.js'
+        'vendors/super-eggs/dcat-admin-extensions-distpicker/dist/distpicker.min.js'
     ];
 
     /**
