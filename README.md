@@ -1,3 +1,5 @@
+> 此包不再维护，请使用 [super-eggs/dcat-distpicker](https://github.com/super-eggs/dcat-distpicker).  
+
 # dcat-admin extension
 
 [Distpicker](https://github.com/fengyuanchen/distpicker)是一个中国省市区三级联动选择组件，这个包是基于`Distpicker`的`dcat-admin`扩展，用来将`Distpicker`集成进`dcat-admin`的表单中，本包参考了[laravel-admin-extensions](https://github.com/laravel-admin-extensions)/**[china-distpicker](https://github.com/laravel-admin-extensions/china-distpicker)**
